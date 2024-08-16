@@ -1,7 +1,11 @@
+using ProyectoFinalTConsulting.servicios;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<UsuarioRepositorio>(sp =>
+    new UsuarioRepositorio(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
